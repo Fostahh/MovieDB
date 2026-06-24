@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		627492922FEAF4CF009AF2A2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = MovieDB;
 			packageProductDependencies = (
+				627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */,
 			);
 			productName = MovieDB;
 			productReference = 6274927B2FEAF4CC009AF2A2 /* MovieDB.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 627492722FEAF4CC009AF2A2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				627BBE372FEBDAE90032C8AE /* XCLocalSwiftPackageReference "../MovieDBDataLayer" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6274927C2FEAF4CC009AF2A2 /* Products */;
 			projectDirPath = "";
@@ -593,6 +602,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		627BBE372FEBDAE90032C8AE /* XCLocalSwiftPackageReference "../MovieDBDataLayer" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../MovieDBDataLayer;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDBDataLayer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 627492732FEAF4CC009AF2A2 /* Project object */;
 }
