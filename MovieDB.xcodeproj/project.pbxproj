@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */; };
+		62F54A0D2FEC122900477DDD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62F54A0C2FEC122900477DDD /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F54A0D2FEC122900477DDD /* Kingfisher in Frameworks */,
 				627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +133,7 @@
 			name = MovieDB;
 			packageProductDependencies = (
 				627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */,
+				62F54A0C2FEC122900477DDD /* Kingfisher */,
 			);
 			productName = MovieDB;
 			productReference = 6274927B2FEAF4CC009AF2A2 /* MovieDB.app */;
@@ -216,6 +219,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				627BBE372FEBDAE90032C8AE /* XCLocalSwiftPackageReference "../MovieDBDataLayer" */,
+				62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6274927C2FEAF4CC009AF2A2 /* Products */;
@@ -610,10 +614,26 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDBDataLayer;
+		};
+		62F54A0C2FEC122900477DDD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -18,7 +18,7 @@ final class AppConfigurator {
         self.window = window
 
         let repository = AppConfigurator.injectingDataLayer()
-        let screenFactory = ScreenFactory(repository: repository)
+        let screenFactory = ScreenFactory(repository: repository, imageBaseURL: AppConfigurator.imageBaseURL)
         self.appNavigator = AppNavigator(screenFactory: screenFactory)
     }
 
@@ -63,6 +63,15 @@ private extension AppConfigurator {
               !value.isEmpty,
               value != "$(BASE_URL)" else {
             fatalError("BASE_URL is missing")
+        }
+        return value
+    }
+
+    static var imageBaseURL: String {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "ImageBaseURL") as? String,
+              !value.isEmpty,
+              value != "$(IMAGE_BASE_URL)" else {
+            fatalError("IMAGE_BASE_URL is missing")
         }
         return value
     }

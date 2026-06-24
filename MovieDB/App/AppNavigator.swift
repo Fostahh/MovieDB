@@ -20,7 +20,7 @@ class AppNavigator {
     }
     
     func createInitialScreen() -> UINavigationController {
-        UINavigationController(rootViewController: screenFactory.createHomeScreen())
+        UINavigationController(rootViewController: screenFactory.createListMovieScreen())
     }
 }
 
