@@ -1,0 +1,10 @@
+//
+//  Development.xcconfig
+//  MovieDB
+//
+//  Created by Mohammad Azri Khairuddin on 24/06/26.
+//
+
+API_KEY = e9a2951508e85e8061f1a7aaf988605b
+AUTH_TOKEN = eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOWEyOTUxNTA4ZTg1ZTgwNjFmMWE3YWFmOTg4NjA1YiIsIm5iZiI6MTY3MzA2NTIzNS4wMzksInN1YiI6IjYzYjhmMzEzZjg1OTU4MDA5NGIyMTNmYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.W8q22qj0ru0d9FlWHHcdZDvYplkDQ_vqFn1wp6p9KR0
+BASE_URL = https:/$()/api.themoviedb.org/3
