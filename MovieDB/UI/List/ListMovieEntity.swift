@@ -8,6 +8,11 @@
 import Foundation
 
 enum ListMovieEntity {
+    struct Genre: Equatable {
+        let id: Int?
+        let name: String
+    }
+
     struct Movie {
         let id, voteCount: Int?
         let title, overview: String?

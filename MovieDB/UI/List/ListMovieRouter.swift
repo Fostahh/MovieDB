@@ -8,6 +8,9 @@
 import UIKit
 
 final class ListMovieRouter: ListMoviePresenterToRouter {
-
     weak var presenter: ListMovieRouterToPresenter?
+    
+    func showDetail(_ viewController: UIViewController, movieId: Int) {
+        // TODO:
+    }
 }

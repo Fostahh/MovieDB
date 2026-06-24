@@ -10,35 +10,43 @@ import MovieDBDataLayer
 
 protocol ListMoviePresenterToView: AnyObject {
     var presenter: ListMovieViewToPresenter? { get set }
-    
-    func reloadData()
+
+    func reloadMovies()
+    func reloadGenres()
 }
 
 protocol ListMoviePresenterToInteractor: AnyObject {
     var presenter: ListMovieInteractorToPresenter? { get set }
-    
-    func getDiscoverMovies()    
+
+    func getGenres()
+    func loadMovies(genreId: Int?)
+    func loadMoreMovies()
 }
 
 protocol ListMoviePresenterToRouter: AnyObject {
     var presenter: ListMovieRouterToPresenter? { get set }
 
-    // TODO: 
+    func showDetail(_ viewController: UIViewController, movieId: Int)
 }
 
 protocol ListMovieViewToPresenter: AnyObject {
     var view: ListMoviePresenterToView? { get set }
     var numberOfMovies: Int { get }
-     
+    var numberOfGenres: Int { get }
+
     func viewDidLoad()
     func getMovie(at row: Int) -> ListMovieEntity.Movie
+    func getGenre(at row: Int) -> ListMovieEntity.Genre
+    func didSelectGenre(at row: Int)
+    func didSelectMovie(at row: Int)
     func loadMoreIfNeeded(currentRow: Int)
 }
 
 protocol ListMovieInteractorToPresenter: AnyObject {
     var interactor: ListMoviePresenterToInteractor? { get set }
-    
-    func didSucceed(movies: [MovieEntity])
+
+    func didLoadGenres(genres: [GenreEntity])
+    func didLoadMovies(movies: [MovieEntity], isNewGenre: Bool)
     func didFailed(message: String)
 }
 
