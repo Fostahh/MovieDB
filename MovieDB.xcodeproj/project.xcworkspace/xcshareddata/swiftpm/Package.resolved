@@ -1,5 +1,5 @@
 {
-  "originHash" : "df42f6be479e8ea10a5565c16e5b532184c9eab56f4c6d7aaa2f5b9aa9ff6b8e",
+  "originHash" : "2a812fbaad8b6c20a0d8fa25d2d07d40c6410fc240323ada41c507f7827c68ba",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "ac632bd26a1c00f139ff62fd01806f21cf67325e",
         "version" : "8.10.0"
+      }
+    },
+    {
+      "identity" : "moviedbdatalayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Fostahh/MovieDBDataLayer",
+      "state" : {
+        "revision" : "0466c41d88124bff20c2ba40b65d5eb5840b8766",
+        "version" : "0.1.0"
       }
     }
   ],
