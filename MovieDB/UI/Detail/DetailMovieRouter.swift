@@ -12,7 +12,8 @@ final class DetailMovieRouter: DetailMoviePresenterToRouter {
     weak var presenter: DetailMovieRouterToPresenter?
     weak var navigator: Navigator?
 
-    func showAllReviews(movieId: Int) {
-        // TODO: 
+    func showAllReviews(vc: DetailMoviePresenterToView?, movieId: Int) {
+        guard let viewController = vc as? UIViewController else { return }
+        navigator?.navigateToListReviewScreen(viewController, movieId: movieId)
     }
 }

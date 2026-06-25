@@ -17,7 +17,7 @@ class DetailMoviePresenter: DetailMovieRouterToPresenter {
     private let movieId: Int
     private let imageBaseURL: String
     
-    private static let previewReviewLimit = 4
+    private let reviewLimit = 4
     
     init(
         view: DetailMoviePresenterToView,
@@ -42,7 +42,7 @@ extension DetailMoviePresenter: DetailMovieViewToPresenter {
     }
 
     func didTapSeeAllReviews() {
-        router?.showAllReviews(movieId: movieId)
+        router?.showAllReviews(vc: view, movieId: movieId)
     }
 }
 
@@ -57,9 +57,9 @@ extension DetailMoviePresenter: DetailMovieInteractorToPresenter {
     }
 
     func didLoadReviews(_ page: ReviewPageEntity) {
-        let items = page.reviews.prefix(Self.previewReviewLimit).map(makeReviewItem)
-        let hasMore = page.totalResults > Self.previewReviewLimit
-        view?.showReviews(Array(items), hasMore: hasMore)
+        let reviews = page.reviews.prefix(reviewLimit).map { ReviewItem($0) }
+        let hasMore = page.totalResults > reviewLimit
+        view?.showReviews(reviews, hasMore: hasMore)
     }
 
     func didFailLoadReviews(message: String) {
@@ -79,54 +79,18 @@ private extension DetailMoviePresenter {
         )
     }
 
-    func makeReviewItem(from review: ReviewEntity) -> ReviewItem {
-        ReviewItem(
-            author: review.author ?? "Anonymous",
-            content: review.content ?? "",
-            ratingText: makeReviewRatingText(review.rating),
-            dateText: makeDateText(review.createdAt)
-        )
-    }
-
     func makeRatingText(average: Double?, count: Int?) -> String? {
-        guard let average, average > 0 else { return "Not yet rated" }
-        let rating = String(format: "★ %.1f", average)
+        let rating = average?.toRatingText ?? "Not Yet Rated"
         guard let count, count > 0 else { return rating }
-        let votes = Self.decimalFormatter.string(from: NSNumber(value: count)) ?? "\(count)"
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let votes = formatter.string(from: NSNumber(value: count)) ?? "\(count)"
         return "\(rating)  ·  \(votes) votes"
-    }
-
-    func makeReviewRatingText(_ rating: Double?) -> String? {
-        guard let rating, rating > 0 else { return nil }
-        return String(format: "★ %.1f", rating)
-    }
-
-    func makeDateText(_ isoString: String?) -> String? {
-        guard let isoString, let date = Self.isoFormatter.date(from: isoString) else { return nil }
-        return Self.displayDateFormatter.string(from: date)
     }
 
     func makeBackdropURL(path: String?) -> URL? {
         guard let path else { return nil }
         return URL(string: "\(imageBaseURL)/w780\(path)")
     }
-
-    static let decimalFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-
-    static let isoFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return formatter
-    }()
-
-    static let displayDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter
-    }()
 }

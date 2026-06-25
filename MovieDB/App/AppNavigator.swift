@@ -9,6 +9,7 @@ import UIKit
 
 protocol Navigator: AnyObject {
     func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int)
+    func navigateToListReviewScreen(_ viewController: UIViewController, movieId: Int)
 }
 
 class AppNavigator {
@@ -27,6 +28,13 @@ extension AppNavigator: Navigator {
     func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int) {
         viewController.navigationController?.pushViewController(
             screenFactory.createDetailMovieScreen(movieId: movieId),
+            animated: true
+        )
+    }
+    
+    func navigateToListReviewScreen(_ viewController: UIViewController, movieId: Int) {
+        viewController.navigationController?.pushViewController(
+            screenFactory.createListReviewScreen(movieId: movieId),
             animated: true
         )
     }
