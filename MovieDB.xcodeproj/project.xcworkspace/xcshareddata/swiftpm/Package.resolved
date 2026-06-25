@@ -1,0 +1,24 @@
+{
+  "originHash" : "2a812fbaad8b6c20a0d8fa25d2d07d40c6410fc240323ada41c507f7827c68ba",
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "ac632bd26a1c00f139ff62fd01806f21cf67325e",
+        "version" : "8.10.0"
+      }
+    },
+    {
+      "identity" : "moviedbdatalayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Fostahh/MovieDBDataLayer",
+      "state" : {
+        "revision" : "70515096cc3f1d31abfb7fb11c2abffd36dfa4b3",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 3
+}
