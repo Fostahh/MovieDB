@@ -615,8 +615,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Fostahh/MovieDBDataLayer";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				kind = exactVersion;
+				version = 1.0.0;
 			};
 		};
 		62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
