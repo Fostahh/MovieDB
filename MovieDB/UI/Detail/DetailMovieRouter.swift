@@ -10,6 +10,7 @@ import UIKit
 final class DetailMovieRouter: DetailMoviePresenterToRouter {
 
     weak var presenter: DetailMovieRouterToPresenter?
+    weak var navigator: Navigator?
 
     func showAllReviews(movieId: Int) {
         // TODO: 

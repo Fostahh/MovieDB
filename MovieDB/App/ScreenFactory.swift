@@ -34,6 +34,7 @@ class ScreenFactory {
         view.presenter = presenter
         interactor.presenter = presenter
         router.presenter = presenter
+        router.navigator = navigator
         
         return view
     }

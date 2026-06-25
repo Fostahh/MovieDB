@@ -24,6 +24,7 @@ protocol DetailMoviePresenterToInteractor: AnyObject {
 
 protocol DetailMoviePresenterToRouter: AnyObject {
     var presenter: DetailMovieRouterToPresenter? { get set }
+    var navigator: Navigator? { get set }
 
     func showAllReviews(movieId: Int)
 }

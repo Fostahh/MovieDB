@@ -8,7 +8,7 @@
 import UIKit
 
 protocol Navigator: AnyObject {
-    // TODO: Stich Screens
+    func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int)
 }
 
 class AppNavigator {
@@ -24,4 +24,10 @@ class AppNavigator {
 }
 
 extension AppNavigator: Navigator {
+    func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int) {
+        viewController.navigationController?.pushViewController(
+            screenFactory.createDetailMovieScreen(movieId: movieId),
+            animated: true
+        )
+    }
 }

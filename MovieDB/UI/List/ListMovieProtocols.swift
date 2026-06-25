@@ -25,8 +25,9 @@ protocol ListMoviePresenterToInteractor: AnyObject {
 
 protocol ListMoviePresenterToRouter: AnyObject {
     var presenter: ListMovieRouterToPresenter? { get set }
+    var navigator: Navigator? { get set }
 
-    func showDetail(_ viewController: UIViewController, movieId: Int)
+    func showDetail(_ view: ListMoviePresenterToView?, movieId: Int)
 }
 
 protocol ListMovieViewToPresenter: AnyObject {
