@@ -7,12 +7,11 @@
 
 import UIKit
 
-protocol Navigator {
-    // TODO:
+protocol Navigator: AnyObject {
+    // TODO: Stich Screens
 }
 
 class AppNavigator {
-    
     private let screenFactory: ScreenFactory
     
     init(screenFactory: ScreenFactory) {
@@ -25,5 +24,4 @@ class AppNavigator {
 }
 
 extension AppNavigator: Navigator {
-    // TODO:
 }
