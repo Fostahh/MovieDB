@@ -26,7 +26,7 @@ protocol DetailMoviePresenterToRouter: AnyObject {
     var presenter: DetailMovieRouterToPresenter? { get set }
     var navigator: Navigator? { get set }
 
-    func showAllReviews(movieId: Int)
+    func showAllReviews(vc: DetailMoviePresenterToView?, movieId: Int)
 }
 
 protocol DetailMovieViewToPresenter: AnyObject {

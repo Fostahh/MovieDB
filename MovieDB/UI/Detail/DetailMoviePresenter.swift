@@ -42,7 +42,7 @@ extension DetailMoviePresenter: DetailMovieViewToPresenter {
     }
 
     func didTapSeeAllReviews() {
-        router?.showAllReviews(movieId: movieId)
+        router?.showAllReviews(vc: view, movieId: movieId)
     }
 }
 

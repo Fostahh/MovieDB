@@ -7,14 +7,15 @@
 
 import UIKit
 
-struct ReviewItem {
-    let author: String
-    let content: String
-    let ratingText: String?
-    let dateText: String?
-}
+typealias ReviewItem = ReviewView.ReviewItem
 
 final class ReviewView: UIView {
+    
+    struct ReviewItem {
+        let author: String
+        let content: String
+        let ratingText: String?
+    }
     
     private let authorLabel: UILabel = {
         let label = UILabel()
@@ -39,13 +40,6 @@ final class ReviewView: UIView {
         return label
     }()
     
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
-        label.textColor = .tertiaryLabel
-        return label
-    }()
-    
     init() {
         super.init(frame: .zero)
         setupUI()
@@ -64,7 +58,7 @@ final class ReviewView: UIView {
         header.spacing = 8
         header.alignment = .firstBaseline
         
-        let stack = UIStackView(arrangedSubviews: [header, contentLabel, dateLabel])
+        let stack = UIStackView(arrangedSubviews: [header, contentLabel])
         stack.axis = .vertical
         stack.spacing = 6
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -85,8 +79,5 @@ final class ReviewView: UIView {
         
         ratingLabel.text = item.ratingText
         ratingLabel.isHidden = item.ratingText == nil
-        
-        dateLabel.text = item.dateText
-        dateLabel.isHidden = item.dateText == nil
     }
 }
