@@ -7,7 +7,6 @@
 
 import Foundation
 import MovieDBDataLayer
-import UIKit
 
 class ListMoviePresenter: ListMovieRouterToPresenter {
     
@@ -105,11 +104,10 @@ extension ListMoviePresenter: ListMovieViewToPresenter {
     }
 
     func didSelectMovie(at row: Int) {
-        guard let id = movies[row].id,
-              let viewController = view as? UIViewController else {
+        guard let id = movies[row].id else {
             return
         }
-        router?.showDetail(viewController, movieId: id)
+        router?.showDetail(view, movieId: id)
     }
 
     func loadMoreIfNeeded(currentRow: Int) {

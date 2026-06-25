@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Fostahh/MovieDBDataLayer",
       "state" : {
-        "revision" : "0466c41d88124bff20c2ba40b65d5eb5840b8766",
-        "version" : "0.1.0"
+        "revision" : "70515096cc3f1d31abfb7fb11c2abffd36dfa4b3",
+        "version" : "0.2.0"
       }
     }
   ],

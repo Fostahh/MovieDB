@@ -7,12 +7,11 @@
 
 import UIKit
 
-protocol Navigator {
-    // TODO:
+protocol Navigator: AnyObject {
+    func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int)
 }
 
 class AppNavigator {
-    
     private let screenFactory: ScreenFactory
     
     init(screenFactory: ScreenFactory) {
@@ -25,5 +24,10 @@ class AppNavigator {
 }
 
 extension AppNavigator: Navigator {
-    // TODO:
+    func navigateToDetailScreen(_ viewController: UIViewController, movieId: Int) {
+        viewController.navigationController?.pushViewController(
+            screenFactory.createDetailMovieScreen(movieId: movieId),
+            animated: true
+        )
+    }
 }

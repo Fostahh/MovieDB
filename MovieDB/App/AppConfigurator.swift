@@ -10,18 +10,20 @@ import UIKit
 import MovieDBDataLayer
 
 final class AppConfigurator {
-
+    
     private let window: UIWindow
     private let appNavigator: AppNavigator
-
+    
     init(window: UIWindow) {
         self.window = window
-
+        
         let repository = AppConfigurator.injectingDataLayer()
         let screenFactory = ScreenFactory(repository: repository, imageBaseURL: AppConfigurator.imageBaseURL)
-        self.appNavigator = AppNavigator(screenFactory: screenFactory)
+        let appNavigator = AppNavigator(screenFactory: screenFactory)
+        screenFactory.navigator = appNavigator
+        self.appNavigator = appNavigator
     }
-
+    
     func start() {
         window.rootViewController = appNavigator.createInitialScreen()
     }
@@ -56,7 +58,7 @@ private extension AppConfigurator {
         }
         return value
     }
-
+    
     static var imageBaseURL: String {
         guard let value = Bundle.main.object(forInfoDictionaryKey: "ImageBaseURL") as? String,
               !value.isEmpty,
