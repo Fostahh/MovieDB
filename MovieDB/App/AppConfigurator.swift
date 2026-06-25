@@ -18,7 +18,7 @@ final class AppConfigurator {
         self.window = window
 
         let repository = AppConfigurator.injectingDataLayer()
-        let screenFactory = ScreenFactory(repository: repository)
+        let screenFactory = ScreenFactory(repository: repository, imageBaseURL: AppConfigurator.imageBaseURL)
         self.appNavigator = AppNavigator(screenFactory: screenFactory)
     }
 
@@ -31,7 +31,6 @@ final class AppConfigurator {
 private extension AppConfigurator {
     static func injectingDataLayer() -> MovieRepository {
         DataLayerFactory.makeRepository(
-            apiKey: apiKey,
             authToken: authToken,
             baseURL: baseURL
         )
@@ -40,15 +39,6 @@ private extension AppConfigurator {
 
 // MARK: - Variables For Data Layer
 private extension AppConfigurator {
-    static var apiKey: String {
-        guard let value = Bundle.main.object(forInfoDictionaryKey: "APIKey") as? String,
-              !value.isEmpty,
-              value != "$(API_KEY)" else {
-            fatalError("API_KEY is missing")
-        }
-        return value
-    }
-
     static var authToken: String {
         guard let value = Bundle.main.object(forInfoDictionaryKey: "AuthToken") as? String,
               !value.isEmpty,
@@ -63,6 +53,15 @@ private extension AppConfigurator {
               !value.isEmpty,
               value != "$(BASE_URL)" else {
             fatalError("BASE_URL is missing")
+        }
+        return value
+    }
+
+    static var imageBaseURL: String {
+        guard let value = Bundle.main.object(forInfoDictionaryKey: "ImageBaseURL") as? String,
+              !value.isEmpty,
+              value != "$(IMAGE_BASE_URL)" else {
+            fatalError("IMAGE_BASE_URL is missing")
         }
         return value
     }

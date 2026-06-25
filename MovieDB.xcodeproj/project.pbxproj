@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */; };
+		62ACDE302FECC5CE002AFE40 /* MovieDBDataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 62ACDE2F2FECC5CE002AFE40 /* MovieDBDataLayer */; };
+		62F54A0D2FEC122900477DDD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62F54A0C2FEC122900477DDD /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F54A0D2FEC122900477DDD /* Kingfisher in Frameworks */,
+				62ACDE302FECC5CE002AFE40 /* MovieDBDataLayer in Frameworks */,
 				627BBE392FEBDAE90032C8AE /* MovieDBDataLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +135,8 @@
 			name = MovieDB;
 			packageProductDependencies = (
 				627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */,
+				62F54A0C2FEC122900477DDD /* Kingfisher */,
+				62ACDE2F2FECC5CE002AFE40 /* MovieDBDataLayer */,
 			);
 			productName = MovieDB;
 			productReference = 6274927B2FEAF4CC009AF2A2 /* MovieDB.app */;
@@ -215,7 +221,8 @@
 			mainGroup = 627492722FEAF4CC009AF2A2;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				627BBE372FEBDAE90032C8AE /* XCLocalSwiftPackageReference "../MovieDBDataLayer" */,
+				62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				62ACDE2E2FECC5CE002AFE40 /* XCRemoteSwiftPackageReference "MovieDBDataLayer" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6274927C2FEAF4CC009AF2A2 /* Products */;
@@ -603,17 +610,39 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		627BBE372FEBDAE90032C8AE /* XCLocalSwiftPackageReference "../MovieDBDataLayer" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../MovieDBDataLayer;
+/* Begin XCRemoteSwiftPackageReference section */
+		62ACDE2E2FECC5CE002AFE40 /* XCRemoteSwiftPackageReference "MovieDBDataLayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Fostahh/MovieDBDataLayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+		62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		627BBE382FEBDAE90032C8AE /* MovieDBDataLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDBDataLayer;
+		};
+		62ACDE2F2FECC5CE002AFE40 /* MovieDBDataLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62ACDE2E2FECC5CE002AFE40 /* XCRemoteSwiftPackageReference "MovieDBDataLayer" */;
+			productName = MovieDBDataLayer;
+		};
+		62F54A0C2FEC122900477DDD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62F54A0B2FEC122900477DDD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
