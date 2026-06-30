@@ -8,6 +8,8 @@
 	<string>$(IMAGE_BASE_URL)</string>
 	<key>AuthToken</key>
 	<string>$(AUTH_TOKEN)</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
