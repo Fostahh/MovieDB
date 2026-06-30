@@ -24,12 +24,11 @@ class ScreenFactory {
         let router = ListMovieRouter()
         let interactor: ListMoviePresenterToInteractor = ListMovieInteractor(repository: repository)
 
-        let presenter = ListMoviePresenter(
-            view: view,
-            interactor: interactor,
-            router: router,
-            imageBaseURL: imageBaseURL
-        )
+        let presenter = ListMoviePresenter(imageBaseURL: imageBaseURL)
+        
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
 
         view.presenter = presenter
         interactor.presenter = presenter
