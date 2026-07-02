@@ -8,56 +8,48 @@
 import Foundation
 import MovieDBDataLayer
 
-class ListReviewInteractor: ListReviewPresenterToInteractor {
-
+final class ListReviewInteractor: ListReviewPresenterToInteractor {
+    
     weak var presenter: ListReviewInteractorToPresenter?
-
+    
     private let repository: MovieRepository
     private let movieId: Int
     private var fetchTask: Task<Void, Never>?
-
-    private var page: Int = 1
-    private var totalPages: Int = 1
-    private var isFetching: Bool = false
-
+    
+    private let paginator = Paginator()
+    
     init(repository: MovieRepository, movieId: Int) {
         self.repository = repository
         self.movieId = movieId
     }
-
+    
     deinit {
         fetchTask?.cancel()
     }
-
+    
     func loadReviews() {
         fetchTask?.cancel()
-        page = 1
-        totalPages = 1
-        isFetching = false
+        paginator.reset()
         fetchReviews()
     }
-
+    
     func loadMoreReviews() {
-        guard page <= totalPages else { return }
+        guard paginator.hasMorePages else { return }
         fetchReviews()
     }
-
+    
     private func fetchReviews() {
-        guard !isFetching else { return }
-        isFetching = true
-
-        let pageToFetch = page
+        guard let pageToFetch = paginator.beginFetch() else { return }
+        
         fetchTask = Task { [weak self] in
             guard let self else { return }
             do {
                 let result = try await repository.getReviews(movieId: movieId, page: pageToFetch)
-                totalPages = result.totalPages
-                page = pageToFetch + 1
-                isFetching = false
+                paginator.completeFetch(fetchedPage: pageToFetch, totalPages: result.totalPages)
                 presenter?.didLoadReviews(result.reviews)
             } catch {
-                isFetching = false
-                presenter?.didFailLoadReviews(message: error.localizedDescription)
+                paginator.failFetch()
+                presenter?.didFailLoadReviews(message: error.displayMessage)
             }
         }
     }

@@ -65,11 +65,11 @@ class ScreenFactory {
         let router = ListReviewRouter()
         let interactor: ListReviewPresenterToInteractor = ListReviewInteractor(repository: repository, movieId: movieId)
 
-        let presenter = ListReviewPresenter(
-            view: view,
-            interactor: interactor,
-            router: router
-        )
+        let presenter = ListReviewPresenter()
+        
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
 
         view.presenter = presenter
         interactor.presenter = presenter
