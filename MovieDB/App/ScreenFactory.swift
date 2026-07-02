@@ -44,12 +44,13 @@ class ScreenFactory {
         let interactor: DetailMoviePresenterToInteractor = DetailMovieInteractor(repository: repository)
 
         let presenter = DetailMoviePresenter(
-            view: view,
-            interactor: interactor,
-            router: router,
             movieId: movieId,
             imageURLBuilder: imageURLBuilder
         )
+        
+        presenter.view = view
+        presenter.interactor = interactor
+        presenter.router = router
 
         view.presenter = presenter
         interactor.presenter = presenter

@@ -13,6 +13,7 @@ protocol DetailMoviePresenterToView: AnyObject {
 
     func configure(with movie: DetailMovieEntity.Movie)
     func showReviews(_ reviews: [ReviewItem], hasMore: Bool)
+    func showError(_ message: String)
 }
 
 protocol DetailMoviePresenterToInteractor: AnyObject {

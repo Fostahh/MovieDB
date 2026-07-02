@@ -54,6 +54,10 @@ extension DetailMovieView: DetailMoviePresenterToView {
         }
     }
 
+    func showError(_ message: String) {
+        Toast.showMessage(message, type: .error)
+    }
+
     func showReviews(_ reviews: [ReviewItem], hasMore: Bool) {
         reviewsStackView.arrangedSubviews.forEach {
             reviewsStackView.removeArrangedSubview($0)
