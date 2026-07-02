@@ -10,23 +10,27 @@ import MovieDBDataLayer
 
 protocol ListMoviePresenterToView: AnyObject {
     var presenter: ListMovieViewToPresenter? { get set }
-
-    func reloadMovies()
-    func reloadGenres()
+    
+    func renderGenreState(_ state: GenreUIState)
+    func renderMovieState(_ state: MovieUIState)
+    func showNoMoreMovies()
+    func showError(_ message: String)
+    func showLoadingFooter()
+    func hideLoadingFooter()
 }
 
 protocol ListMoviePresenterToInteractor: AnyObject {
     var presenter: ListMovieInteractorToPresenter? { get set }
-
-    func getGenres()
-    func loadMovies(genreId: Int?)
-    func loadMoreMovies()
+    
+    func fetchGenres()
+    func fetchMovies(genreId: Int?)
+    func fetchMoreMovies()
 }
 
 protocol ListMoviePresenterToRouter: AnyObject {
     var presenter: ListMovieRouterToPresenter? { get set }
     var navigator: Navigator? { get set }
-
+    
     func showDetail(_ view: ListMoviePresenterToView?, movieId: Int)
 }
 
@@ -34,21 +38,25 @@ protocol ListMovieViewToPresenter: AnyObject {
     var view: ListMoviePresenterToView? { get set }
     var numberOfMovies: Int { get }
     var numberOfGenres: Int { get }
-
+    
     func viewDidLoad()
-    func getMovie(at row: Int) -> ListMovieEntity.Movie
-    func getGenre(at row: Int) -> ListMovieEntity.Genre
     func didSelectGenre(at row: Int)
     func didSelectMovie(at row: Int)
-    func loadMoreIfNeeded(currentRow: Int)
+    func fetchMoreMoviesIfNeeded(currentRow: Int)
+    func cellForItemAt(_ index: Int) -> GenreCellUIState
+    func cellForRowAt(_ index: Int) -> MovieCellUIState
+    func refreshGenre()
+    func refreshMovie()
 }
 
 protocol ListMovieInteractorToPresenter: AnyObject {
     var interactor: ListMoviePresenterToInteractor? { get set }
-
-    func didLoadGenres(genres: [GenreEntity])
-    func didLoadMovies(movies: [MovieEntity], isNewGenre: Bool)
-    func didFailed(message: String)
+    
+    func didSucceedFetchGenres(genres: [GenreEntity])
+    func didFailedFetchGenres(message: String)
+    func didSucceedFetchMovies(movies: [MovieEntity], isNewGenre: Bool)
+    func didFailedFetchMovies(message: String)
+    func didReachEndOfMovies()
 }
 
 protocol ListMovieRouterToPresenter: AnyObject {
