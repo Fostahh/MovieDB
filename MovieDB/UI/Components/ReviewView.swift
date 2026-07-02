@@ -6,17 +6,8 @@
 //
 
 import UIKit
-import MovieDBDataLayer
-
-typealias ReviewItem = ReviewView.ReviewItem
 
 final class ReviewView: UIView {
-    
-    struct ReviewItem {
-        let author: String
-        let content: String
-        let ratingText: String?
-    }
     
     private let authorLabel: UILabel = {
         let label = UILabel()
@@ -80,15 +71,5 @@ final class ReviewView: UIView {
         
         ratingLabel.text = item.ratingText
         ratingLabel.isHidden = item.ratingText == nil
-    }
-}
-
-extension ReviewItem {
-    init(_ entity: ReviewEntity) {
-        self.init(
-            author: entity.author ?? "Anonymous",
-            content: entity.content ?? "",
-            ratingText: entity.rating?.toRatingText
-        )
     }
 }

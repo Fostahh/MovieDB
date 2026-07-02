@@ -13,5 +13,6 @@ enum Constant {
     static let dummyText: String = "Dummy Text"
     static let longDummyText: String = "Long Dummy Text. Long Dummy Text. Long Dummy Text. Long Dummy Text"
     static let movieFetchThreshold: Int = 5
+    static let reviewFetchThreshold: Int = 3
     static let noMovies: String = "No movies found"
 }
