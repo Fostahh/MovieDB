@@ -15,7 +15,7 @@ class DetailMovieInteractor: DetailMoviePresenterToInteractor {
     private let repository: MovieRepository
     private var detailTask: Task<Void, Never>?
     private var reviewsTask: Task<Void, Never>?
-    
+
     init(repository: MovieRepository) {
         self.repository = repository
     }
@@ -32,7 +32,7 @@ class DetailMovieInteractor: DetailMoviePresenterToInteractor {
                 let detail = try await repository.getMovieDetail(movieId: movieId)
                 presenter?.didLoadDetail(detail)
             } catch {
-                presenter?.didFailLoadDetail(message: error.localizedDescription)
+                presenter?.didFailLoadDetail(message: error.displayMessage)
             }
         }
     }
@@ -44,7 +44,7 @@ class DetailMovieInteractor: DetailMoviePresenterToInteractor {
                 let result = try await repository.getReviews(movieId: movieId, page: page)
                 presenter?.didLoadReviews(result)
             } catch {
-                presenter?.didFailLoadReviews(message: error.localizedDescription)
+                presenter?.didFailLoadReviews(message: error.displayMessage)
             }
         }
     }

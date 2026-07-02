@@ -20,15 +20,9 @@ class DetailMoviePresenter: DetailMovieRouterToPresenter {
     private let reviewLimit = 4
 
     init(
-        view: DetailMoviePresenterToView,
-        interactor: DetailMoviePresenterToInteractor?,
-        router: DetailMoviePresenterToRouter?,
         movieId: Int,
         imageURLBuilder: ImageURLBuilder
     ) {
-        self.view = view
-        self.interactor = interactor
-        self.router = router
         self.movieId = movieId
         self.imageURLBuilder = imageURLBuilder
     }
@@ -53,7 +47,7 @@ extension DetailMoviePresenter: DetailMovieInteractorToPresenter {
     }
 
     func didFailLoadDetail(message: String) {
-        print(message)
+        view?.showError(message)
     }
 
     func didLoadReviews(_ page: ReviewPageEntity) {
@@ -63,7 +57,7 @@ extension DetailMoviePresenter: DetailMovieInteractorToPresenter {
     }
 
     func didFailLoadReviews(message: String) {
-        print(message)
+        view?.showError(message)
         view?.showReviews([], hasMore: false)
     }
 }
