@@ -11,12 +11,12 @@ import MovieDBDataLayer
 class ScreenFactory {
 
     private let repository: MovieRepository
-    private let imageBaseURL: String
+    private let imageURLBuilder: ImageURLBuilder
     weak var navigator: Navigator?
 
     init(repository: MovieRepository, imageBaseURL: String) {
         self.repository = repository
-        self.imageBaseURL = imageBaseURL
+        self.imageURLBuilder = ImageURLBuilder(baseURL: imageBaseURL)
     }
 
     func createListMovieScreen() -> UIViewController {
@@ -24,7 +24,7 @@ class ScreenFactory {
         let router = ListMovieRouter()
         let interactor: ListMoviePresenterToInteractor = ListMovieInteractor(repository: repository)
 
-        let presenter = ListMoviePresenter(imageBaseURL: imageBaseURL)
+        let presenter = ListMoviePresenter(imageURLBuilder: imageURLBuilder)
         
         presenter.view = view
         presenter.interactor = interactor
@@ -48,7 +48,7 @@ class ScreenFactory {
             interactor: interactor,
             router: router,
             movieId: movieId,
-            imageBaseURL: imageBaseURL
+            imageURLBuilder: imageURLBuilder
         )
 
         view.presenter = presenter

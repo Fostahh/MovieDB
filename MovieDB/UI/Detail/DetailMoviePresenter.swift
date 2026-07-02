@@ -15,22 +15,22 @@ class DetailMoviePresenter: DetailMovieRouterToPresenter {
     var router: DetailMoviePresenterToRouter?
     
     private let movieId: Int
-    private let imageBaseURL: String
-    
+    private let imageURLBuilder: ImageURLBuilder
+
     private let reviewLimit = 4
-    
+
     init(
         view: DetailMoviePresenterToView,
         interactor: DetailMoviePresenterToInteractor?,
         router: DetailMoviePresenterToRouter?,
         movieId: Int,
-        imageBaseURL: String
+        imageURLBuilder: ImageURLBuilder
     ) {
         self.view = view
         self.interactor = interactor
         self.router = router
         self.movieId = movieId
-        self.imageBaseURL = imageBaseURL
+        self.imageURLBuilder = imageURLBuilder
     }
 }
 
@@ -75,7 +75,7 @@ private extension DetailMoviePresenter {
             title: detail.title,
             overview: detail.overview,
             ratingText: makeRatingText(average: detail.voteAverage, count: detail.voteCount),
-            backdropURL: makeBackdropURL(path: detail.backdropPath)
+            backdropURL: imageURLBuilder.url(path: detail.backdropPath, size: .backdrop)
         )
     }
 
@@ -87,10 +87,5 @@ private extension DetailMoviePresenter {
         formatter.numberStyle = .decimal
         let votes = formatter.string(from: NSNumber(value: count)) ?? "\(count)"
         return "\(rating)  ·  \(votes) votes"
-    }
-
-    func makeBackdropURL(path: String?) -> URL? {
-        guard let path else { return nil }
-        return URL(string: "\(imageBaseURL)/w780\(path)")
     }
 }

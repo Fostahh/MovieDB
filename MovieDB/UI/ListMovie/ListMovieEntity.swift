@@ -17,12 +17,7 @@ enum ListMovieEntity {
         let id, voteCount: Int?
         let title, overview: String?
         let popularity, voteAverage: Double?
-        let posterPath, releaseDate: String?
-        let imageBaseURL: String
-        
-        var posterPathURL: URL? {
-            guard let posterPath else { return nil }
-            return URL(string: "\(imageBaseURL)/w500\(posterPath)")
-        }
+        let releaseDate: String?
+        let posterPathURL: URL?
     }
 }

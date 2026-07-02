@@ -71,9 +71,9 @@ final class ListMoviePresenter: ListMovieRouterToPresenter {
     var interactor: ListMoviePresenterToInteractor?
     var router: ListMoviePresenterToRouter?
     
-    private let imageBaseURL: String
-    init(imageBaseURL: String) {
-        self.imageBaseURL = imageBaseURL
+    private let imageURLBuilder: ImageURLBuilder
+    init(imageURLBuilder: ImageURLBuilder) {
+        self.imageURLBuilder = imageURLBuilder
     }
     
     func viewDidLoad() {
@@ -117,9 +117,8 @@ extension ListMoviePresenter: ListMovieInteractorToPresenter {
                 overview: $0.overview,
                 popularity: $0.popularity,
                 voteAverage: $0.voteAverage,
-                posterPath: $0.posterPath,
                 releaseDate: $0.releaseDate,
-                imageBaseURL: imageBaseURL
+                posterPathURL: imageURLBuilder.url(path: $0.posterPath, size: .poster)
             )
         }
         
@@ -160,7 +159,7 @@ extension ListMoviePresenter: ListMovieViewToPresenter {
     }
     
     func didSelectMovie(at row: Int) {
-        guard let id = movies[row].id else {
+        guard movieState == .success, let id = movies[row].id else {
             return
         }
         router?.showDetail(view, movieId: id)
